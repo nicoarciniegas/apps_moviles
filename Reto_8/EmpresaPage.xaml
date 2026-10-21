@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Reto8.EmpresaPage"
+             Title="Empresa">
+    <ScrollView>
+        <VerticalStackLayout Padding="15" Spacing="8">
+            <Entry x:Name="NombreEntry" Placeholder="Nombre de la empresa" />
+            <Entry x:Name="UrlEntry" Placeholder="URL p&#225;gina web" Keyboard="Url" />
+            <Entry x:Name="TelEntry" Placeholder="Tel&#233;fono" Keyboard="Telephone" />
+            <Entry x:Name="EmailEntry" Placeholder="Email" Keyboard="Email" />
+            <Editor x:Name="ProdEditor" Placeholder="Productos y servicios" HeightRequest="100" />
+            <Label Text="Clasificaci&#243;n" FontAttributes="Bold" />
+            <HorizontalStackLayout>
+                <CheckBox x:Name="ConsultoriaCheck" />
+                <Label Text="Consultor&#237;a" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox x:Name="MedidaCheck" />
+                <Label Text="Desarrollo a la medida" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <HorizontalStackLayout>
+                <CheckBox x:Name="FabricaCheck" />
+                <Label Text="F&#225;brica de software" VerticalOptions="Center" />
+            </HorizontalStackLayout>
+            <Button Text="Guardar" Clicked="OnGuardar" />
+            <Button x:Name="EliminarBtn" Text="Eliminar" BackgroundColor="Red" Clicked="OnEliminar" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Reto8"
+             x:Class="Reto8.MainPage"
+             Title="Empresas">
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="10" RowSpacing="8">
+        <SearchBar x:Name="BuscarBar" Placeholder="Filtrar por nombre" TextChanged="OnFiltroChanged" />
+        <Picker x:Name="ClasPicker" Grid.Row="1" Title="Clasificaci&#243;n" SelectedIndexChanged="OnFiltroChanged" />
+        <CollectionView x:Name="Lista" Grid.Row="2" SelectionMode="Single" SelectionChanged="OnSeleccion">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="local:Empresa">
+                    <VerticalStackLayout Padding="6">
+                        <Label Text="{Binding Nombre}" FontAttributes="Bold" FontSize="18" />
+                        <Label Text="{Binding Clasificacion}" />
+                        <Label Text="{Binding Telefono}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Grid.Row="3" Text="Nueva empresa" Clicked="OnNueva" />
+    </Grid>
+</ContentPage>
