@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:reto10.Models"
+             x:Class="reto10.Views.BuscarPage"
+             Title="Puntos Posconsumo">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" Padding="12" RowSpacing="8">
+        <VerticalStackLayout Spacing="8">
+            <Entry Placeholder="Texto de busqueda (ej. pilas)" Text="{Binding Texto}" />
+            <Entry Placeholder="Municipio (ej. Cucuta)" Text="{Binding Municipio}" />
+            <Picker Title="Cantidad de resultados" ItemsSource="{Binding Limites}" SelectedItem="{Binding Limite}" />
+            <Button Text="Buscar" Command="{Binding BuscarCommand}" />
+        </VerticalStackLayout>
+        <ActivityIndicator Grid.Row="1" IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+        <VerticalStackLayout Grid.Row="2" Spacing="4">
+            <Label Text="{Binding Mensaje}" FontAttributes="Bold" />
+            <Button Text="Reintentar" Command="{Binding BuscarCommand}" IsVisible="{Binding HayError}" />
+            <Label Text="{Binding Url}" FontSize="10" />
+        </VerticalStackLayout>
+        <CollectionView Grid.Row="3" ItemsSource="{Binding Resultados}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:PuntoPosconsumo">
+                    <Border Padding="10" Margin="0,4" StrokeThickness="1">
+                        <VerticalStackLayout Spacing="2">
+                            <Label Text="{Binding RazonSocial}" FontAttributes="Bold" />
+                            <Label Text="{Binding Direccion}" />
+                            <Label Text="{Binding Municipio}" />
+                            <Label Text="{Binding Departamento}" />
+                            <Label Text="{Binding Programa, StringFormat='Programa: {0}'}" />
+                            <Label Text="{Binding TipoResiduos, StringFormat='Residuos: {0}'}" />
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
